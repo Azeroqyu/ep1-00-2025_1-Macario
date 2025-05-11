@@ -1,0 +1,11 @@
+*.class
+*.jar
+bin
+out
+build
+target
+*.log
+debugger.*
+raylib.*
+*.out
+*.cpp

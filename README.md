@@ -9,10 +9,10 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Dados do Aluno
 
-- **Nome completo:** [Preencher aqui]
-- **Matrícula:** [Preencher aqui]
-- **Curso:** [Preencher aqui]
-- **Turma:** [Preencher aqui]
+- **Nome completo:** [L.M.S]
+- **Matrícula:** [242005140]
+- **Curso:** [Eletrônica/software]
+- **Turma:** [6]
 
 ---
 
@@ -28,7 +28,7 @@ O enunciado do trabalho pode ser encontrado aqui:
    [Descrever aqui as principais pastas do projeto]
 
 3. **Versão do JAVA utilizada:**  
-   [Descrever aqui como versão do JAVA utilizada no projeto. Sugestão: `java 21`]
+   [`java 21`]
 
 ---
 
@@ -67,7 +67,7 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Observações (Extras ou Dificuldades)
 
-- [Espaço para o aluno comentar qualquer funcionalidade extra que implementou, dificuldades enfrentadas, ou considerações importantes.]
+- [Utilizando o principio KISS]
 
 ---
 
