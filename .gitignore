@@ -9,3 +9,4 @@ debugger.*
 raylib.*
 *.out
 *.cpp
+.data/
