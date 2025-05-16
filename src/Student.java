@@ -44,7 +44,7 @@ public class Student {
 	public void withdrawSemester(String semester, List<Class> classes) {
 		for (Class class1 : classes) {
 			if (class1.getSemester().equals(semester)) {
-				class1.setWithdrawn(true);
+				class1.setWithdraw(true);
 			}
 		}
 	}
