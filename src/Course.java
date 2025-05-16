@@ -12,11 +12,10 @@ public class Course {
 	public Course() {
 	}
 
-	public Course(String id, String subject, String schedule, String duration, String name) {
+	public Course(String id, String subject, String schedule, String duration) {
 		this.id = id;
 		this.subject = subject;
 		this.duration = duration;
-		this.name = name;
 	}
 
 	public String getName() {
