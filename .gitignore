@@ -1,12 +1,12 @@
 *.class
 *.jar
+*.csv
 bin
 out
 build
 target
 *.log
 debugger.*
-raylib.*
 *.out
 *.cpp
 .data/

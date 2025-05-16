@@ -2,40 +2,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
-	private String subject;
-	private String name;
-	private String id;
-	private String duration;
-	private Teacher teacher;
-	private String year;
+	protected String subject;
+	public String name;
+	public String id;
+	public String duration;
+	private ArrayList<Class> classes;
 	protected ArrayList<Course> prerequisites;
 
-	public Course(String subject, String schedule, Teacher teacher, String year, String duration) {
-		this.subject = subject;
-		this.teacher = teacher;
-		this.duration = duration;
-		this.year = year;
+	public Course() {
+	}
 
+	public Course(String id, String subject, String schedule, String duration, String name) {
+		this.id = id;
+		this.subject = subject;
+		this.duration = duration;
+		this.name = name;
 	}
 
 	public String getName() {
+		name = id + " " + " " + subject + "(" + duration + ")";
 		return name;
-	}
-
-	public String getYear() {
-		return year;
 	}
 
 	public String getId() {
 		return id;
 	}
 
-	public String getSubject() {
-		return subject;
+	public void addClasses(Class class1) {
+		if (classes == null) {
+			classes = new ArrayList<>();
+		}
+		classes.add(class1);
 	}
 
-	public Teacher getTeacher() {
-		return teacher;
+	public ArrayList<Class> getClasses() {
+		return classes;
+	}
+
+	public String getSubject() {
+		return subject;
 	}
 
 	public String getDuration() {
@@ -46,8 +51,8 @@ public class Course {
 		this.subject = subject;
 	}
 
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
+	public void setClasses(ArrayList<Class> classes) {
+		this.classes = classes;
 	}
 
 	public void setName(String name) {
@@ -62,12 +67,7 @@ public class Course {
 		this.id = id;
 	}
 
-	public void setYear(String year) {
-		this.year = year;
-	}
-
 	public ArrayList<Course> getPrerequisites() {
 		return prerequisites;
 	}
-
 }
