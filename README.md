@@ -28,7 +28,7 @@ O enunciado do trabalho pode ser encontrado aqui:
    [Descrever aqui as principais pastas do projeto]
 
 3. **Versão do JAVA utilizada:**  
-   [`java 21`]
+   [`java 24.0.1`]
 
 ---
 
@@ -67,10 +67,12 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Observações (Extras ou Dificuldades)
 
-- [Utilizando o principio KISS]
-
+- [interface grafica, o gtk me deu MUITA dificultade para funcionar e a fonte fica oscilando]
+-[o programa assume que o sistema vai ser usado especificamente pela FCTE, então os cursos pré-instânciados são: Eletrônica, software e Aeroespacial]
+- [A complexidade da Csv cresce muito rapido]
+-  []
 ---
 
 ## Contato
 
-- [Opcional: E-mail pessoal do aluno.]
+- [LuanMac00@proton.me]
