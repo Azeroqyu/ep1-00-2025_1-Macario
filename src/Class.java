@@ -15,9 +15,12 @@ public class Class extends Course {
 	private int max_students;
 	protected Set<Student> students;
 
+	public Class() {
+	};
+
 	public Class(String subject, String schedule, int semester, int class_number,
-			int max_students, String duration, String id, String name, String year) {
-		super(id, subject, schedule, duration, name);
+			int max_students, String duration, String id, String year) {
+		super(id, subject, schedule, duration);
 		this.class_number = class_number;
 		this.schedule = schedule;
 		this.year = year + semester;
@@ -82,19 +85,4 @@ public class Class extends Course {
 			System.err.println("Erro passando para csv: " + e.getMessage());
 		}
 	}
-
-	public static void main(String[] args) {
-		Class apc = new Class("Apc", "213.234", 3, 3, 60, "23h", "mat43", "placeholder", "2025");
-
-		Student s1 = new Student("S1001", "Plchldr");
-		Student s2 = new Student("S1002", "J12312");
-
-		apc.signStudent(s1, apc);
-		apc.signStudent(s2, apc);
-		ArrayList<Class> cls = new ArrayList<>();
-		cls.add(apc);
-		saveClassToCSV(cls, "../.data/classes.csv");
-		System.out.println("Classes saved to classes.csv");
-	}
-
 }
