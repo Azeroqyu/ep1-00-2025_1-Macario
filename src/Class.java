@@ -1,33 +1,47 @@
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
 public class Class extends Course {
-	protected int class_number;
+	protected static final String PATH = "../.data/classes.csv";
+	protected Integer class_number;
 	protected String classroom;
 	protected String schedule;
 	protected String semester;
 	protected String year;
 	protected boolean is_withdrawn;
-	private int max_students;
+	private Integer max_students;
 	protected Set<Student> students;
+	private Set<Grade> grades = new HashSet<>();
 
 	public Class() {
-	};
+	}
 
-	public Class(String subject, String schedule, int semester, int class_number,
-			int max_students, String duration, String id, String year) {
-		super(id, subject, schedule, duration);
+	public Class(String subject, String schedule, Integer class_number,
+			String classroom, Integer max_students, String duration,
+			String id, String year, Integer semester) {
+		super(id, subject, duration);
 		this.class_number = class_number;
-		this.schedule = schedule;
 		this.year = year + semester;
 		this.max_students = max_students;
 		this.students = new HashSet<>();
 		this.is_withdrawn = false;
+		this.schedule = schedule;
+		this.classroom = classroom;
 		addClasses((Class) this);
+	}
+
+	public void addGrade(Grade grade) {
+		grades.add(grade);
+		GradeSystem.addGrade(grade);
+	}
+
+	public Set<Grade> getGrades() {
+		return grades;
 	}
 
 	public void signStudent(Student student, Class class1) {
@@ -40,7 +54,7 @@ public class Class extends Course {
 		return students;
 	}
 
-	public int getmax_students() {
+	public Integer getmax_students() {
 		return max_students;
 	}
 
@@ -65,7 +79,6 @@ public class Class extends Course {
 		return String.join(",",
 				super.id,
 				super.subject,
-				super.name.replace(",", ";"),
 				String.valueOf(class_number),
 				classroom != null ? classroom.replace(",", ";") : " ",
 				schedule.replace(",", ";"),
@@ -77,7 +90,7 @@ public class Class extends Course {
 
 	public static void saveClassToCSV(ArrayList<Class> classes, String filename) {
 		try (FileWriter writer = new FileWriter(filename)) {
-			writer.write("ID,materia,nome,turma,sala,horario,vagas,matriculados\n");
+			writer.write("ID,materia,turma,sala,horario,trancado,vagas,matriculados,semestre\n");
 			for (Class cls : classes) {
 				writer.write(cls.toCSV() + "\n");
 			}
