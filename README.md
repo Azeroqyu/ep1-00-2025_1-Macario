@@ -68,7 +68,7 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Observações (Extras ou Dificuldades)
 
 - [interface grafica, o gtk me deu MUITA dificultade para funcionar e a fonte fica oscilando]
--[o programa assume que o sistema vai ser usado especificamente pela FCTE, então os cursos pré-instânciados são: Eletrônica, software e Aeroespacial]
+- [o programa assume que o sistema vai ser usado especificamente pela FCTE, então os cursos pré-instânciados são: Eletrônica, software e Aeroespacial]
 - [A complexidade da Csv cresce muito rapido]
 -  []
 ---
