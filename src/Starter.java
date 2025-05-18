@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Starter {
-
 	public static void main(String[] args) {
 		// Set GTK look and feel
 		try {
@@ -27,28 +26,27 @@ public class Starter {
 	}
 
 	public void Startgui() {
-		JFrame frame = new JFrame("Sistema Acadêmico v_1.0");
+		JFrame frame = new JFrame("init");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1980, 1080);
 		frame.setLayout(new BorderLayout(100, 100));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Add padding around the content
-		JPanel contentPanel = new JPanel(new BorderLayout(10, 10));
+
+		JPanel contentPanel = new JPanel(new BorderLayout(5, 5));
 		contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-		// Add university header
 		JPanel headerPanel = new JPanel();
-		headerPanel.setLayout(new BoxLayout(headerPanel, BoxLayout.Y_AXIS));
+		headerPanel.setLayout(new BoxLayout(headerPanel, BoxLayout.PAGE_AXIS));
 
-		JLabel titleLabel = new JLabel("Sistema Academico", JLabel.CENTER);
+		JLabel titleLabel = new JLabel("Sistema Academico FCTE", JLabel.CENTER);
 		titleLabel.setFont(new Font("Sans-serif", Font.BOLD, 24));
 
-		JLabel uniNameLabel = new JLabel("V_1.0", JLabel.CENTER);
+		JLabel uniNameLabel = new JLabel("V_1_0", JLabel.CENTER);
 		uniNameLabel.setFont(new Font("Sans-serif", Font.BOLD, 28));
-		uniNameLabel.setForeground(new Color(0, 70, 130)); // Dark blue color
+		uniNameLabel.setForeground(new Color(24, 24, 37));
 
 		headerPanel.add(titleLabel);
-		headerPanel.add(Box.createVerticalStrut(10));
+		headerPanel.add(Box.createVerticalStrut(5));
 		headerPanel.add(uniNameLabel);
 
 		contentPanel.add(headerPanel, BorderLayout.NORTH);
@@ -56,35 +54,24 @@ public class Starter {
 		JPanel buttonPanel = new JPanel(new GridLayout(5, 5, 20, 20));
 		buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-		// creating buttons
-		JButton studentButton = createModeButton("Modo Aluno:", "../assets/student.png");
-		JButton classButton = createModeButton("Modo Turma:", "../assets/teacher_icon.png");
-		JButton adminButton = createModeButton("Modo Administrador", "../assets/admin_icon.png");
-		JButton teacherButton = createModeButton("Modo professor", "../assets/teacher_icon.png");
+		// creating buttons, dont know if ill have time to do icons
+		JButton studentButton = createModeButton("Gerenciamento de Alunos", "../assets/student.png");
+		JButton classButton = createModeButton("Gerenciamento de disciplinas", "../assets/teacher_icon.png");
 		JButton exitButton = createModeButton("Sair", "../assets/exit_icon.png");
+		JButton reportsButton = createModeButton("Relatórios", "../assets/reports_icon.png");
 
-		// Add action listeners
 		studentButton.addActionListener(e -> openStudentMode(frame));
 		classButton.addActionListener(e -> OpenClassMode(frame));
-		adminButton.addActionListener(e -> openAdminMode(frame));
-		teacherButton.addActionListener(e -> openAdminMode(frame));
 		exitButton.addActionListener(e -> System.exit(0));
-
 		buttonPanel.add(studentButton);
 		buttonPanel.add(classButton);
-		buttonPanel.add(adminButton);
+		buttonPanel.add(reportsButton);
 		buttonPanel.add(exitButton);
 
 		contentPanel.add(buttonPanel, BorderLayout.CENTER);
 
-		// Add footer
-		JLabel footerLabel = new JLabel("<<<------------------------------------------------>>>>",
-				JLabel.CENTER);
-		footerLabel.setFont(new Font("Sans-serif", Font.PLAIN, 12));
-		contentPanel.add(footerLabel, BorderLayout.SOUTH);
-
 		frame.add(contentPanel);
-		frame.setLocationRelativeTo(null); // Center on screen
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 
@@ -94,17 +81,6 @@ public class Starter {
 		button.setPreferredSize(new Dimension(200, 60));
 		button.setFocusPainted(false);
 
-		try {
-			ImageIcon icon = new ImageIcon(iconPath);
-			if (icon.getImage() != null) {
-				button.setIcon(icon);
-				button.setHorizontalTextPosition(SwingConstants.LEFT);
-				button.setIconTextGap(15);
-			}
-		} catch (Exception e) {
-			// Icon not found, proceed without it
-		}
-
 		return button;
 	}
 
@@ -113,15 +89,14 @@ public class Starter {
 	}
 
 	private static void OpenClassMode(JFrame parent) {
-	// :TODO: fix addclasses not saving to csv !!!
-	// parent.getContentPane().removeAll();
-	// 	AddClasses classMode = new AddClasses(parent);
-	//	parent.add(classMode.getPanel());
-	//	parent.revalidate();
+		parent.getContentPane().removeAll();
+		AddClasses classMode = new AddClasses(parent);
+		parent.add(classMode.getPanel());
+		parent.revalidate();
 
 	}
 
-	private static void openAdminMode(JFrame parent) {
+	private static void openReportsMode(JFrame parent) {
 		// implement amdin mode here
 	}
 }
