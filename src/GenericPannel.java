@@ -3,21 +3,20 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.*;
 import java.io.*;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GenericPannel {
 	protected JFrame parentFrame;
 	protected JPanel mainPanel;
-	private JTable classTable;
+	private JTable dataTable;
 	protected List<String[]> parsedData;
 
-	GenericPannel(JFrame parentFrame, String mode) {
+	GenericPannel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
 		this.mainPanel = new JPanel(new BorderLayout());
 		this.parsedData = new ArrayList<>();
-		StartUI(mode);
+		StartUI();
 	}
 
 	protected abstract String getFilePath();
@@ -30,7 +29,7 @@ public abstract class GenericPannel {
 
 	protected abstract String getMode();
 
-	private void StartUI(String mode) {
+	private void StartUI() {
 
 		JButton viewButton = new JButton("Ver" + getMode());
 		JButton addButton = new JButton("Adicionar" + getMode());
@@ -52,44 +51,30 @@ public abstract class GenericPannel {
 		buttonPanel.add(backButton);
 
 		mainPanel.add(buttonPanel, BorderLayout.NORTH);
-
-		classTable = new JTable(new Object[0][], new String[] { getCSVHeader() });
-		classTable.setBackground(new Color(17, 17, 27));
-		classTable.setForeground(Color.white);
-		classTable.getTableHeader().setBackground(new Color(17, 17, 27));
-		mainPanel.add(new JScrollPane(classTable), BorderLayout.CENTER);
+		dataTable = new JTable(new Object[0][], getColumnNames());
+		dataTable.setBackground(new Color(17, 17, 27));
+		dataTable.setForeground(Color.white);
+		dataTable.getTableHeader().setBackground(new Color(17, 17, 27));
+		mainPanel.add(new JScrollPane(dataTable), BorderLayout.CENTER);
 
 	}
 
-	protected void showFromCSV(String PATH) {
-		parsedData = readFromCSV(PATH);
+	protected void showFromCSV(String filePath) {
+		parsedData = readFromCSV(filePath);
 		updateTable();
 	}
 
 	protected void updateTable() {
+		DefaultTableModel table = new DefaultTableModel(getColumnNames(), 0);
 		if (parsedData != null && !parsedData.isEmpty()) {
-			String[] columnNames = {
-					"ID",
-					"Materia",
-					"Nome",
-					"Turma_numero",
-					"sala",
-					"horario",
-					"Semestre",
-					"vagas",
-					"matriculados" };
-
-			Object[][] data = new Object[parsedData.size()][];
-			for (int i = 0; i < parsedData.size(); i++) {
-				data[i] = parsedData.get(i);
+			for (String[] row : parsedData) {
+				table.addRow(row);
 			}
-			classTable.setModel(new javax.swing.table.DefaultTableModel(
-					parsedData.toArray(new String[0][]),
-					columnNames));
 		}
+		dataTable.setModel(table);
 	}
 
-	protected void saveToCSV(String path) {
+	protected void saveToCSV(String filePath) {
 		if (parsedData == null || parsedData.isEmpty()) {
 			JOptionPane.showMessageDialog(parentFrame, "Nada a salvar");
 			return;
@@ -108,13 +93,13 @@ public abstract class GenericPannel {
 		}
 	}
 
-	private List<String[]> readFromCSV(String PATH) {
+	private List<String[]> readFromCSV(String filePath) {
 		List<String[]> existingData = new ArrayList<>();
-		File csvFile = new File(PATH);
+		File csvFile = new File(filePath);
 		if (!csvFile.exists()) {
 			return existingData;
 		}
-		try (BufferedReader br = new BufferedReader(new FileReader(getFilePath()))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 			br.readLine();
 			String line;
 			while ((line = br.readLine()) != null) {
