@@ -9,8 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AddStudent extends GenericPannel {
-    private static final String[] COLUMN_NAMES = { "ID", "nome", "tipo", "turmas_matriculadas", "materias_trancadas" };
-    private static final String CSV_HEADER = "ID,nome,tipo,turmas_matriculadas,turmas_trancadas";
+    private static final String[] COLUMN_NAMES = { "matricula", "nome", "tipo", "turmas_matriculadas",
+            "materias_trancadas" };
+    private static final String CSV_HEADER = "matricula,nome,tipo,turmas_matriculadas,turmas_trancadas";
     private static final String FILE_PATH = "../.data/students.csv";
     private static final String MODE = "Alunos";
     private List<Student> students;
@@ -91,7 +92,7 @@ public class AddStudent extends GenericPannel {
         header.setBackground(new Color(24, 24, 37));
         panel.add(new JLabel("Tipo:"));
         panel.add(modeSwitcher);
-        panel.add(new JLabel("ID:"));
+        panel.add(new JLabel("Matricula:"));
         panel.add(idField);
         panel.add(new JLabel("Nome:"));
         panel.add(nameField);

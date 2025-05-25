@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.List;
 
 public class AddGrades extends GenericPannel {
-    private static final String CSV_HEADER = "student_id,class_id,p1,p2,p3,lista,seminario,modo_ponderado,mencao,aprovado";
+    private static final String CSV_HEADER = "matricula_Aluno,materia_id,p1,p2,p3,lista,seminario,modo_ponderado,mencao,aprovado";
     private static final String[] COLUMN_NAMES = CSV_HEADER.split(",");
     private static final String FILE_PATH = "../.data/grades.csv";
     private static final String MODE = "Notas";
