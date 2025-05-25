@@ -1,4 +1,4 @@
-!#/usr/bin/env bash
+#!/usr/bin/env bash
 cd ./src
 javac -cp ../bin -d ../bin *.java 
-cd ..
+java -cp ../bin Starter
