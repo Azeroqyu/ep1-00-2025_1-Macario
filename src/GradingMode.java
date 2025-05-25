@@ -5,6 +5,7 @@ public class GradingMode extends Grade {
 			boolean weightedMode) {
 		super(student, classToBeGraded, p1, p2, p3, l, s, weightedMode);
 		this.finalGrade = FinalGrade();
+		this.isApproved = makeApproval();
 	}
 
 	@Override
@@ -13,15 +14,22 @@ public class GradingMode extends Grade {
 		return finalGrade;
 	}
 
+	protected boolean makeApproval() {
+		return (super.getFrequency() >= 75) && (finalGrade >= 5);
+
+	}
+
 	@Override
 	public String getFinalGrade() {
-		if (finalGrade < 1)
+		if (frequency < 75)
+			return "SR";
+		else if (finalGrade < 1)
 			return "SR";
 		else if (finalGrade < 5)
 			return "MI";
-		else if (finalGrade < 7)
+		else if (finalGrade < 7 || frequency >= 75)
 			return "MM";
-		else if (finalGrade < 9)
+		else if (finalGrade < 9 || frequency >= 75)
 			return "MS";
 		else
 			return "SS";

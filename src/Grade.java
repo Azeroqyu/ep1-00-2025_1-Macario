@@ -1,11 +1,13 @@
 public abstract class Grade {
 	protected Student Student;
 	protected Class ClassToBeGraded;
+	protected float frequency;
 	protected float p1, p2, p3, l, s;
-	protected boolean WeightedMode;
+	protected boolean switchMode;
+	protected boolean isApproved;
 
 	public Grade(Student student, Class classToBeGraded, float p1, float p2, float p3, float l, float s,
-			boolean weightedMode) {
+			boolean switchMode) {
 		this.Student = student;
 		this.ClassToBeGraded = classToBeGraded;
 		this.p1 = isValidGrade(p1);
@@ -13,7 +15,7 @@ public abstract class Grade {
 		this.p3 = isValidGrade(p3);
 		this.l = isValidGrade(l);
 		this.s = isValidGrade(s);
-		this.WeightedMode = weightedMode;
+		this.switchMode = switchMode;
 	}
 
 	public abstract String getFinalGrade();
@@ -26,7 +28,7 @@ public abstract class Grade {
 	}
 
 	public float finalNumericGrade() {
-		if (WeightedMode) {
+		if (switchMode) {
 			return (p1 + (p2 * 2) + (p3 * 3) + l + s) / 8;
 		}
 		return (p1 + p2 + p3 + l + s) / 5;
@@ -37,6 +39,26 @@ public abstract class Grade {
 				Student.getId(),
 				ClassToBeGraded.getId(),
 				getFinalGrade());
+	}
+
+	public Class getClassToBeGraded() {
+		return ClassToBeGraded;
+	}
+
+	public float getFrequency() {
+		return frequency;
+	}
+
+	public Student getStudent() {
+		return Student;
+	}
+
+	public boolean checkswitchMode() {
+		return switchMode;
+	}
+
+	public boolean isApproved() {
+		return isApproved;
 	}
 
 	public abstract float FinalGrade();
