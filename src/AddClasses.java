@@ -7,7 +7,7 @@ public class AddClasses extends GenericPannel {
     private static final String[] COLUMN_NAMES = { "ID", "materia", "numero_turma", "sala", "horario", "semestre",
             "vagas", "matriculados" };
     private static final String MODE = "Turmas";
-    private static final String FILE_PATH = "../.data/classes.csv";
+    public static final String FILE_PATH = "../.data/classes.csv";
 
     public AddClasses(JFrame parentFrame) {
         super(parentFrame);

@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.Writer;
 
 public class Class extends Course {
-	protected static final String PATH = "../.data/classes.csv";
 	protected Integer class_number;
 	protected String classroom;
 	protected String schedule;
@@ -21,18 +20,19 @@ public class Class extends Course {
 	public Class() {
 	}
 
-	public Class(String subject, String schedule, Integer class_number,
+	public Class(String subject, String schedule,
 			String classroom, Integer max_students, String duration,
 			String id, String year, Integer semester) {
 		super(id, subject, duration);
-		this.class_number = class_number;
-		this.year = year + semester;
+		this.class_number = super.getClasses().size() + 1;
+		this.year = year + "/" + semester;
 		this.max_students = max_students;
 		this.students = new HashSet<>();
 		this.is_withdrawn = false;
 		this.schedule = schedule;
 		this.classroom = classroom;
-		addClasses((Class) this);
+		super.addClasses((Class) this);
+		this.is_withdrawn = false;
 	}
 
 	public void addGrade(Grade grade) {
@@ -62,17 +62,26 @@ public class Class extends Course {
 		return semester;
 	}
 
+	@Override
+	public String getId() {
+		return super.getId();
+	}
+
 	public boolean getWithdraw() {
 		return is_withdrawn;
 	}
 
-	@Override
-	public String toString() {
-		return super.toString();
-	}
-
 	public void setWithdraw(boolean is_withdrawn) {
 		this.is_withdrawn = is_withdrawn;
+	}
+
+	@Override
+	public String toString() {
+		return getId() + "-" + getSubject() + "turma_" + class_number;
+	}
+
+	public String getSchedule() {
+		return schedule;
 	}
 
 	public String toCSV() {
@@ -88,14 +97,4 @@ public class Class extends Course {
 
 	}
 
-	public static void saveClassToCSV(ArrayList<Class> classes, String filename) {
-		try (FileWriter writer = new FileWriter(filename)) {
-			writer.write("ID,materia,turma,sala,horario,trancado,vagas,matriculados,semestre\n");
-			for (Class cls : classes) {
-				writer.write(cls.toCSV() + "\n");
-			}
-		} catch (IOException e) {
-			System.err.println("Erro passando para csv: " + e.getMessage());
-		}
-	}
 }

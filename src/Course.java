@@ -8,14 +8,16 @@ public class Course {
 	public String duration;
 	private ArrayList<Class> classes;
 	protected ArrayList<Course> prerequisites;
+	private static ArrayList<Class> AllClasses = new ArrayList<>();
 
 	public Course() {
 	}
 
-	public Course(String id, String subject, String schedule, String duration) {
+	public Course(String id, String subject, String duration) {
 		this.id = id;
 		this.subject = subject;
 		this.duration = duration;
+		this.classes = new ArrayList<>();
 	}
 
 	public String getName() {
@@ -28,10 +30,8 @@ public class Course {
 	}
 
 	public void addClasses(Class class1) {
-		if (classes == null) {
-			classes = new ArrayList<>();
-		}
 		classes.add(class1);
+		AllClasses.add(class1);
 	}
 
 	public ArrayList<Class> getClasses() {
@@ -50,10 +50,6 @@ public class Course {
 		this.subject = subject;
 	}
 
-	public void setClasses(ArrayList<Class> classes) {
-		this.classes = classes;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -64,6 +60,11 @@ public class Course {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public static List<Class> getAllClasses() {
+		return AllClasses;
+
 	}
 
 	public ArrayList<Course> getPrerequisites() {

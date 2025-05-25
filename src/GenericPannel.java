@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class GenericPannel {
 	protected JFrame parentFrame;
 	protected JPanel mainPanel;
-	private JTable dataTable;
+	protected JTable dataTable;
 	protected List<String[]> parsedData;
 
 	GenericPannel(JFrame parentFrame) {
@@ -29,7 +29,7 @@ public abstract class GenericPannel {
 
 	protected abstract String getMode();
 
-	private void StartUI() {
+	protected void StartUI() {
 
 		JButton viewButton = new JButton("Ver" + getMode());
 		JButton addButton = new JButton("Adicionar" + getMode());
@@ -93,7 +93,7 @@ public abstract class GenericPannel {
 		}
 	}
 
-	private List<String[]> readFromCSV(String filePath) {
+	protected List<String[]> readFromCSV(String filePath) {
 		List<String[]> existingData = new ArrayList<>();
 		File csvFile = new File(filePath);
 		if (!csvFile.exists()) {
@@ -114,7 +114,7 @@ public abstract class GenericPannel {
 		return existingData;
 	}
 
-	private void returnToMainMenu() {
+	protected void returnToMainMenu() {
 		parentFrame.getContentPane().removeAll();
 		new Starter().Startgui();
 		parentFrame.revalidate();
