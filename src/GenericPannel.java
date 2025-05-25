@@ -93,7 +93,7 @@ public abstract class GenericPannel {
 		}
 	}
 
-	protected List<String[]> readFromCSV(String filePath) {
+	public static List<String[]> readFromCSV(String filePath) {
 		List<String[]> existingData = new ArrayList<>();
 		File csvFile = new File(filePath);
 		if (!csvFile.exists()) {
@@ -106,10 +106,7 @@ public abstract class GenericPannel {
 				existingData.add(line.split(","));
 			}
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(parentFrame,
-					"Erro Lendo CSV: " + e.getMessage(),
-					"Erro",
-					JOptionPane.ERROR_MESSAGE);
+			System.err.println(e);
 		}
 		return existingData;
 	}

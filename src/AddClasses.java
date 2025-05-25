@@ -1,10 +1,14 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 import java.awt.*;
 import java.time.Year;
+import java.util.ArrayList;
 
 public class AddClasses extends GenericPannel {
-    private static final String CSV_HEADER = "Materia,horario,";
-    private static final String[] COLUMN_NAMES = { "ID", "materia", "numero_turma", "sala", "horario", "semestre",
+    private static final String CSV_HEADER = "ID,materia,duracao,numero_turma,sala,horario,semestre,vagas,matriculados";
+    private static final String[] COLUMN_NAMES = { "ID", "materia", "duracao", "numero_turma", "sala", "horario",
+            "semestre",
             "vagas", "matriculados" };
     private static final String MODE = "Turmas";
     public static final String FILE_PATH = "../.data/classes.csv";
@@ -60,6 +64,8 @@ public class AddClasses extends GenericPannel {
         panel.add(durationField);
         panel.add(new JLabel("Sala:"));
         panel.add(classroomField);
+        panel.add(new JLabel("Turma numero:"));
+        panel.add(classNumberField);
         int result = JOptionPane.showConfirmDialog(
                 parentFrame,
                 panel,
@@ -77,7 +83,20 @@ public class AddClasses extends GenericPannel {
                         idField.getText(),
                         String.valueOf(Year.now()),
                         Integer.parseInt(semesterField.getText()));
-                parsedData.add(newClass.toCSV().split(","));
+                newClass.setClass_number(Integer.parseInt(classNumberField.getText()));
+                int semester = Integer.parseInt(semesterField.getText());
+                parsedData.add(new String[] {
+                        newClass.getId(),
+                        newClass.getSubject(),
+                        newClass.getDuration(),
+                        String.valueOf(newClass.getClass_number()),
+                        newClass.getClassroom(),
+                        newClass.getSchedule(),
+                        String.valueOf(semester),
+                        String.valueOf(newClass.getmax_students()),
+                        "0" });
+                Course.addClasses(newClass);
+                Course.reloadClasses();
                 updateTable();
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(
@@ -96,5 +115,4 @@ public class AddClasses extends GenericPannel {
             }
         }
     }
-
 }

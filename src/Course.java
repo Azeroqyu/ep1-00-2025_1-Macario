@@ -1,4 +1,6 @@
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Course {
@@ -8,7 +10,7 @@ public class Course {
 	public String duration;
 	private ArrayList<Class> classes;
 	protected ArrayList<Course> prerequisites;
-	private static ArrayList<Class> AllClasses = new ArrayList<>();
+	static ArrayList<Class> AllClasses = new ArrayList<>();
 
 	public Course() {
 	}
@@ -29,9 +31,14 @@ public class Course {
 		return id;
 	}
 
-	public void addClasses(Class class1) {
-		classes.add(class1);
-		AllClasses.add(class1);
+	public static List<Class> getAllClasses() {
+		return new ArrayList<>(AllClasses);
+	}
+
+	public static void addClasses(Class class1) {
+		if (!AllClasses.contains(class1)) {
+			AllClasses.add(class1);
+		}
 	}
 
 	public ArrayList<Class> getClasses() {
@@ -62,12 +69,38 @@ public class Course {
 		this.id = id;
 	}
 
-	public static List<Class> getAllClasses() {
-		return AllClasses;
-
-	}
-
 	public ArrayList<Course> getPrerequisites() {
 		return prerequisites;
 	}
+
+	public static void reloadClasses() {
+		AllClasses.clear();
+		loadClassesFromCSV();
+	}
+
+	private static void loadClassesFromCSV() {
+		List<String[]> classData = GenericPannel.readFromCSV(AddClasses.FILE_PATH);
+		for (String[] row : classData) {
+			try {
+				if (row.length < 9) {
+					System.err.println("ignorando coluna incompleta: " + Arrays.toString(row));
+					continue;
+				}
+				Class casls = new Class(
+						row[1],
+						row[5],
+						row[4],
+						Integer.parseInt(row[7]),
+						row[2],
+						row[0],
+						String.valueOf(Year.now()),
+						Integer.parseInt(row[6]));
+				casls.setClass_number(Integer.parseInt(row[3]));
+				Course.addClasses(casls);
+			} catch (Exception e) {
+				System.err.println("Erro ao ler turmas: " + Arrays.toString(row));
+			}
+		}
+	}
+
 }

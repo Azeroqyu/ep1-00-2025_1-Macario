@@ -31,7 +31,6 @@ public class Class extends Course {
 		this.is_withdrawn = false;
 		this.schedule = schedule;
 		this.classroom = classroom;
-		super.addClasses((Class) this);
 		this.is_withdrawn = false;
 	}
 
@@ -82,6 +81,18 @@ public class Class extends Course {
 
 	public String getSchedule() {
 		return schedule;
+	}
+
+	public Integer getClass_number() {
+		return class_number;
+	}
+
+	public String getClassroom() {
+		return classroom;
+	}
+
+	public void setClass_number(Integer class_number) {
+		this.class_number = class_number;
 	}
 
 	public String toCSV() {
