@@ -4,15 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Starter {
+
 	public static void main(String[] args) {
-		// Set GTK look and feel
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
 			System.setProperty("jdk.gtk.version", "3");
 			System.setProperty("jdk.gtk.verbose", "true");
 		} catch (Exception e) {
 			try {
-				// Fallback to default if gtk is not available
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -26,7 +25,7 @@ public class Starter {
 	}
 
 	public void Startgui() {
-		JFrame frame = new JFrame("init");
+		JFrame frame = new JFrame("Sistema Academico");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1980, 1080);
 		frame.setLayout(new BorderLayout(100, 100));
@@ -58,13 +57,16 @@ public class Starter {
 		JButton studentButton = createModeButton("Gerenciamento de Alunos", "../assets/student.png");
 		JButton classButton = createModeButton("Gerenciamento de disciplinas", "../assets/teacher_icon.png");
 		JButton exitButton = createModeButton("Sair", "../assets/exit_icon.png");
-		JButton reportsButton = createModeButton("Relatórios", "../assets/reports_icon.png");
+		JButton GradeSystemButton = createModeButton("Gerenciamento de notas", "../assets/grade_icon.png");
+		JButton reportsButton = createModeButton("Relatórios", "../assets/report_icon.png");
 
 		studentButton.addActionListener(e -> openStudentMode(frame));
 		classButton.addActionListener(e -> OpenClassMode(frame));
+		GradeSystemButton.addActionListener(e -> openGradeSystem(frame));
 		exitButton.addActionListener(e -> System.exit(0));
 		buttonPanel.add(studentButton);
 		buttonPanel.add(classButton);
+		buttonPanel.add(GradeSystemButton);
 		buttonPanel.add(reportsButton);
 		buttonPanel.add(exitButton);
 
@@ -76,16 +78,20 @@ public class Starter {
 	}
 
 	private static JButton createModeButton(String text, String iconPath) {
-		JButton button = new JButton(text);
+		JButton button = new JButton(text, new ImageIcon(iconPath));
+		button.setVerticalTextPosition(SwingConstants.BOTTOM);
+		button.setHorizontalTextPosition(SwingConstants.CENTER);
 		button.setFont(new Font("Sans-serif", Font.BOLD, 16));
 		button.setPreferredSize(new Dimension(200, 60));
 		button.setFocusPainted(false);
-
 		return button;
 	}
 
 	private static void openStudentMode(JFrame parent) {
-		// implement student register here
+		parent.getContentPane().removeAll();
+		AddStudent studentMOde = new AddStudent(parent);
+		parent.add(studentMOde.getPanel());
+		parent.revalidate();
 	}
 
 	private static void OpenClassMode(JFrame parent) {
@@ -96,7 +102,15 @@ public class Starter {
 
 	}
 
+	private static void openGradeSystem(JFrame parent) {
+		parent.getContentPane().removeAll();
+		AddGrades gradeMode = new AddGrades(parent);
+		parent.add(gradeMode.getPanel());
+		parent.revalidate();
+
+	}
+
 	private static void openReportsMode(JFrame parent) {
-		// implement amdin mode here
+
 	}
 }
