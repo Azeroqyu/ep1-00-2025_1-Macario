@@ -32,7 +32,10 @@ O enunciado do trabalho pode ser encontrado aqui:
 ---
 
 ## Vídeo de Demonstração
-https://github.com/user-attachments/assets/d661ab2a-865a-4702-a7e7-6ab39073dfa4
+>[!NOTE]
+>Interface grafica varia a depender do sist operacional e tema do GTK
+[video]
+(https://github.com/user-attachments/assets/d661ab2a-865a-4702-a7e7-6ab39073dfa4)
 ---
 
 ## Prints da Execução
