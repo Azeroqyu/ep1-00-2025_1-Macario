@@ -19,7 +19,7 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Instruções para Compilação e Execução
 
 1. **Compilação e execução**  
-   [```bash `sh compile.sh` ``` Caso queira rodar de novo, basta ```bash `sh run.sh` ```
+   ```bash `sh compile.sh` ``` Caso queira rodar de novo, basta ```bash `sh run.sh` ```
 
 
 3. **Estrutura de Pastas:**  
@@ -54,11 +54,11 @@ O enunciado do trabalho pode ser encontrado aqui:
 ## Principais Funcionalidades Implementadas
 
 - [x] Cadastro, listagem, matrícula e trancamento de alunos (Normais e Especiais) 
-- [x] Cadastro de disciplinas e criação de turmas (presenciais e remotas(a fazer) )
-- [x] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos
-- [x] Lançamento de notas e controle de presença
+- [x] Cadastro de disciplinas e criação de turmas (presenciais e remotas(não fiz))
+- [x] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos (faltou pre-requisitos)
+- [x] Lançamento de notas e controle  de presença(Não fiz graficamente) 
 - [x] Cálculo de média final e verificação de aprovação/reprovação
-- [ ] Relatórios de desempenho acadêmico por aluno, turma e disciplina
+- [x] Relatórios de desempenho acadêmico por turma e disciplina (Não tive tempo de fazer por aluno )
 - [x] Persistência de dados em arquivos (.txt ou .csv)
 - [x] Tratamento de duplicidade de matrículas
 - [x] Uso de herança, polimorfismo e encapsulamento
@@ -67,10 +67,9 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Observações (Extras ou Dificuldades)
 
-- [interface grafica,o java swing em geral foi ruim de escrever e lidar com]
-- [o programa assume que o sistema vai ser usado especificamente pela FCTE, então os cursos pré-instânciados são: Eletrônica, software e Aeroespacial]
-- [A complexidade da Csv cresce muito rapido, a logica por traz de adicionar notas ficou extremamente convoluta]
--  []
+- interface grafica,o java swing em geral foi ruim de escrever e se lidar com
+- Utilizar somente java 24.0.1, sem nenhuma biblioteca externa por que eu não queria usar grade, maven, ou qualquer dependencia externa
+- A complexidade da Csv cresce muito rapido, a logica por traz de adicionar notas ficou extremamente convoluta.
 ---
 
 ## Contato
