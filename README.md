@@ -18,33 +18,33 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Instruções para Compilação e Execução
 
-1. **Compilação:**  
-   [Descrever aqui como compilar o projeto. Exemplo: `javac Main.java` ou o script usado]
+1. **Compilação e execução**  
+   [```bash `sh compile.sh` ``` Caso queira rodar de novo, basta ```bash `sh run.sh` ```
 
-2. **Execução:**  
-   [Descrever aqui como executar o projeto. Exemplo: `java Main` ou o script usado]
 
 3. **Estrutura de Pastas:**  
-   [Descrever aqui as principais pastas do projeto]
-
++ assets  
++ bin
++ src
 3. **Versão do JAVA utilizada:**  
-   [`java 24.0.1`]
+   `java 24.0.1`
 
 ---
 
 ## Vídeo de Demonstração
 
-- [Inserir o link para o vídeo no YouTube/Drive aqui]
+- [A fazer]
 
 ---
 
 ## Prints da Execução
-
+>[!NOTE]
+>O programa tenta carregar a GUI com gtk, então o a sua GUI certamente será diferente da minha
 1. Menu Principal:  
-   ![Inserir Print 1](caminho/do/print1.png)
+   ![Inserir Print 1](../assets/add_aluno_dialogo.png)
 
 2. Cadastro de Aluno:  
-   ![Inserir Print 2](caminho/do/print2.png)
+   ![Inserir Print 2](../assets/add_aluno.png)
 
 3. Relatório de Frequência/Notas:  
    ![Inserir Print 3](caminho/do/print3.png)
@@ -53,14 +53,14 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 ## Principais Funcionalidades Implementadas
 
-- [x] Cadastro, listagem, matrícula e trancamento de alunos (Normais e Especiais)
+- [x] Cadastro, listagem, matrícula e trancamento de alunos (Normais e Especiais) 
 - [x] Cadastro de disciplinas e criação de turmas (presenciais e remotas(a fazer) )
 - [x] Matrícula de alunos em turmas, respeitando vagas e pré-requisitos
-- [ ] Lançamento de notas e controle de presença
-- [ ] Cálculo de média final e verificação de aprovação/reprovação
+- [x] Lançamento de notas e controle de presença
+- [x] Cálculo de média final e verificação de aprovação/reprovação
 - [ ] Relatórios de desempenho acadêmico por aluno, turma e disciplina
 - [x] Persistência de dados em arquivos (.txt ou .csv)
-- [] Tratamento de duplicidade de matrículas
+- [x] Tratamento de duplicidade de matrículas
 - [x] Uso de herança, polimorfismo e encapsulamento
 
 ---
@@ -69,10 +69,10 @@ O enunciado do trabalho pode ser encontrado aqui:
 
 - [interface grafica,o java swing em geral foi ruim de escrever e lidar com]
 - [o programa assume que o sistema vai ser usado especificamente pela FCTE, então os cursos pré-instânciados são: Eletrônica, software e Aeroespacial]
-- [A complexidade da Csv cresce muito rapido, a logica por traz de adicionar notas ficou extremamente convoluta.]
+- [A complexidade da Csv cresce muito rapido, a logica por traz de adicionar notas ficou extremamente convoluta]
 -  []
 ---
 
 ## Contato
 
-- [LuanMac00@proton.me]
+-
