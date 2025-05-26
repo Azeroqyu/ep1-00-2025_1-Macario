@@ -6,11 +6,11 @@ import java.time.Year;
 import java.util.ArrayList;
 
 public class AddClasses extends GenericPannel {
-    private static final String CSV_HEADER = "ID,materia,duracao,numero_turma,sala,horario,semestre,vagas,matriculados";
-    private static final String[] COLUMN_NAMES = { "ID", "materia", "duracao", "numero_turma", "sala", "horario",
+    public static final String CSV_HEADER = "ID,materia,duracao,numero_turma,sala,horario,semestre,vagas,matriculados";
+    public static final String[] COLUMN_NAMES = { "ID", "materia", "duracao", "numero_turma", "sala", "horario",
             "semestre",
             "vagas", "matriculados" };
-    private static final String MODE = "Turmas";
+    public static final String MODE = "Turmas";
     public static final String FILE_PATH = "../.data/classes.csv";
 
     public AddClasses(JFrame parentFrame) {

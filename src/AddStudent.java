@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AddStudent extends GenericPannel {
-    private static final String[] COLUMN_NAMES = { "matricula", "nome", "tipo", "turmas_matriculadas",
+    static final String[] COLUMN_NAMES = { "matricula", "nome", "tipo", "turmas_matriculadas",
             "materias_trancadas" };
-    private static final String CSV_HEADER = "matricula,nome,tipo,turmas_matriculadas,turmas_trancadas";
-    private static final String FILE_PATH = "../.data/students.csv";
-    private static final String MODE = "Alunos";
+    static final String CSV_HEADER = "matricula,nome,tipo,turmas_matriculadas,turmas_trancadas";
+    static final String FILE_PATH = "../.data/students.csv";
+    static final String MODE = "Alunos";
     private List<Student> students;
 
     public AddStudent(JFrame parentFrame) {
