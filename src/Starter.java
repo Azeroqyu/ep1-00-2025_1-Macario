@@ -64,6 +64,7 @@ public class Starter {
 		classButton.addActionListener(e -> OpenClassMode(frame));
 		GradeSystemButton.addActionListener(e -> openGradeSystem(frame));
 		exitButton.addActionListener(e -> System.exit(0));
+		reportsButton.addActionListener(e -> openReportsMode(frame));
 		buttonPanel.add(studentButton);
 		buttonPanel.add(classButton);
 		buttonPanel.add(GradeSystemButton);
@@ -111,6 +112,9 @@ public class Starter {
 	}
 
 	private static void openReportsMode(JFrame parent) {
-
+		parent.getContentPane().removeAll();
+		AddReports reportMode = new AddReports(parent);
+		parent.add(reportMode.getPanel());
+		parent.revalidate();
 	}
 }
