@@ -41,10 +41,10 @@ O enunciado do trabalho pode ser encontrado aqui:
 >[!NOTE]
 >O programa tenta carregar a GUI com gtk, então o a sua GUI certamente será diferente da minha
 1. Menu Principal:  
-   ![Inserir Print 1](../assets/add_aluno_dialogo.png)
+   ![Inserir Print 1](/assets/add_aluno_dialogo.png)
 
 2. Cadastro de Aluno:  
-   ![Inserir Print 2](../assets/add_aluno.png)
+   ![Inserir Print 2](/assets/add_aluno.png)
 
 3. Relatório de Frequência/Notas:  
    ![Inserir Print 3](caminho/do/print3.png)
